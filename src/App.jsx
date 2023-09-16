@@ -15,12 +15,19 @@ function App() {
     setBookmarks(newBookmarks);
   }
 
+  const [readingTime, setReadingTime] = useState(0);
+
+  const handleAddToMarkAsRead = time =>{
+    const newReadingtime = readingTime + time;
+    setReadingTime(newReadingtime)
+  }
+
   return (
     <>    
       <Header></Header>
       <div className='md:flex max-w-6xl mx-auto'>
-          <Blogs handleAddtobookmarks={handleAddtobookmarks}></Blogs>
-          <Bookmarks bookmarks={bookmarks}></Bookmarks>
+          <Blogs handleAddtobookmarks={handleAddtobookmarks} handleAddToMarkAsRead={handleAddToMarkAsRead}></Blogs>
+          <Bookmarks bookmarks={bookmarks} readingTime={readingTime}></Bookmarks>
       </div>
     </>
   )
